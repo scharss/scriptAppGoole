@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+  
+  
+  <style>
+            input[type=text], select {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              text-align: center;
+            }
+            
+            #nom{
+            width: 100%;
+            margin-bottom:  5px;
+            cursor: pointer;
+            padding: 12px 20px;
+           
+            }
+            
+                 
+            
+            button{
+              width: 100%;
+              height: 30%;
+              background-color: #4CAF50;
+              color: white;
+              padding: 15px 32px;
+              margin: 80px 0 ;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 70px;;
+              
+            }
+            
+            input[type=submit]:hover {
+              background-color: #45a049;
+            }
+            
+            input[type="text"] {
+            
+            font-size: 60px;
+            cursor: pointer;
+  
+}
+            
+            div {
+              border-radius: 5px;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
+            form {
+                margin-top: 20px;
+width: 100%;
+height: 100%
+display: inline-block;
+
+text-align: center;
+
+}
+            
+
+            </style>
+  
+  
+  
+  
+  </head>
+  <body>
+  
+
+
+
+
+<!--*****************************************************************-->
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+               <!--Código-->
+                     
+  <h1>Programar Día Elegido entre Hoy o la Próxima Semana</h1>
+ <input id="nom" placeholder="Nombre, Celular" required>
+
+
+
+<select id="dias" onchange="ShowSelected();" name="producto">
+<option value="12">Lun</option>
+<option value="13">Mar</option>
+<option value="14">Mie</option>
+<option value="15">Jue</option>
+<option value="16">Vie</option>
+<option value="17">Sab</option>
+<option value="18">Dom</option>
+</select>
+
+
+<select id="horas" onchange="ShowSelected();" name="producto">
+<option value="22">8 AM</option>
+<option value="23">9 AM</option>
+<option value="24">10 AM</option>
+<option value="25">11 AM</option>
+<option value="26">12 PM</option>
+<option value="27">1 PM</option>
+<option value="28">2 PM</option>
+<option value="29">3 PM</option>
+<option value="30">4 PM</option>
+<option value="31">5 PM</option>
+<option value="32">6 PM</option>
+<option value="33">7 PM</option>
+<option value="34">8 PM</option>
+</select>
+
+<select id="future" onchange="ShowSelected();" name="producto">
+<option value="42">Hoy</option>
+<option value="43">Próxima Semana</option>
+</select>
+
+  
+  
+  
+  
+ <button type="button" onclick="suma()" class="btn btn-secondary" font-size="70px">Enviar</button>
+
+        </div>
+    </div>
+</div>
+<!--*****************************************************************-->
+  
+  
+  
+  
+  <script>
+  function suma()
+{
+
+/* COLUMNA*/
+var dias = document.getElementById("dias");
+
+var col = dias.options[dias.selectedIndex].text;
+
+//fILA;
+
+var horas = document.getElementById("horas");
+
+var row = horas.options[horas.selectedIndex].text;
+
+//porxima semana
+var future= document.getElementById("future");
+
+var f = future.options[future.selectedIndex].text;
+
+
+var nom = document.getElementById("nom").value
+
+//var cel = document.getElementById("cel").value
+
+
+
+//row = parseFloat(y);
+//col = parseFloat(x);
+
+//z = nom +" "+ cel+" "+ x+" "+y+ " "+ f;
+
+
+if(row=="8 AM"){
+    row=2;
+
+}else if (row=="9 AM") {
+     row=3;
+}else if (row=="10 AM") {
+     row=4;
+}else if (row=="11 AM") {
+     row=5;
+}else if (row=="12 PM") {
+     row=6;
+}else if (row=="1 PM") {
+     row=7;
+}else if (row=="2 PM") {
+     row=8;
+}else if (row=="3 PM") {
+     row=9;
+}else if (row=="4 PM") {
+     row=10;
+}else if (row=="5 PM") {
+     row=11;
+}else if (row=="6 PM") {
+     row=12;
+}else if (row=="7 PM") {
+     row=13;
+}else {
+     row=14;
+}
+
+
+<!--************Col***************-->
+
+if(col=="Lun"){
+    col=2;
+
+}else if (col=="Mar") {
+     col=3;
+}else if (col=="Mie") {
+     col=4;
+}else if (col=="Jue") {
+     col=5;
+}else if (col=="Vie") {
+     col=6;
+}else if (col=="Sab") {
+     col=7;
+}else   {
+     col=8;
+}
+
+
+//document.getElementById("demo").innerHTML= row;
+//document.getElementById("demo1").innerHTML=col;
+
+
+
+
+google.script.run.userClicked(row,col,nom,f);
+
+
+
+
+}
+  </script>
+  
+  
+  
+      <!--********************************importante*********************************
+            
+                  <div class="container">
+    <div class="row">
+        <div class="col-12 col-ms-12 col-md-12 col-lg-12 col-xl-12"></div>
+
+  <form >
+            <p><label><h1>Programación Semanal</h1></label></p>
+            <label><h1>Agenda hoy o para el próximo Lunes a las 8 Am</h1></label>
+            <input type="text" id="num1"  placeholder="Nombre Celular Fecha" required>
+        
+            
+            
+          
+            <button type="button" onclick="suma()" class="btn btn-secondary" font-size="70px">Enviar</button>
+            
+            
+            
+            
+            
+      
+      
+          </form>
+
+</div>
+</div>
+
+                  
+                  
+                ********************************--> 
+   <!--***************************importante**************************************         
+                  
+ <script>
+                  
+                  
+    function suma(){
+    var num1 = document.getElementById("num1").value;
+    document.getElementById("num1").value="";
+    //var num2 = document.getElementById("num2").value;
+     //var num3 = document.getElementById("num3").value;
+      //var num4 = document.getElementById("num4").value;
+       //var num5 = document.getElementById("num5").value;
+    
+   google.script.run.userClicked(num1);
+  
+          
+}
+                  
+</script>
+                  
+                  
+                  
+     ********************************--> 
+                  
+                  
+                  
+                  
+                  
+      
+      <!--google.script.run.userClicked(num1, num2, num3, num4, num5);-->
+      
+      
+      
+      <!-- **********************code*****************************
+      
+                  
+                  
+                  <div class="container">
+    <div class="row">
+        <div class="col-12 col-ms-12 col-md-12 col-lg-12 col-xl-12"></div>
+
+  <h1>HORARIO</h1>
+  <table>
+      <tr>
+          <th>HORAS</th>
+          <th>LUNES</th>
+          <th>MARTES</th>
+          <th>MIÉRCOLES</th>
+          <th>JUEVES</th>
+          <th>VIERNES</th>
+    </tr>
+    <tr id="row1">
+        <td>8:00 AM</td>
+        <td><input type="text" id="num1"></td>   
+        <td><input type="text" id="num2"></td>   
+        <td><input type="text" id="num3"></td>   
+        <td><input type="text" id="num4"></td>   
+        <td><input type="text" id="num5"></td>   
+    </tr>
+    <tr id="row2">
+        <td>9:00 AM</td>
+        <td>Comercio Financiero</td>   
+        <td>Química</td>   
+        <td>Sistemas</td>   
+        <td>Religion</td>   
+        <td>Español</td>   
+    </tr>
+
+    <tr id="row3">
+            <td>10 AM</td>
+            <td>Afro</td>   
+            <td>Español</td>   
+            <td>Sistemas</td>   
+            <td>Contabilidad</td>   
+            <td>Matemáticas</td>   
+    </tr>
+
+    <tr id="row4">
+            <td>11:00 AM</td>
+            <td>DESCANSO</td>   
+            <td>DESCANSO</td>   
+            <td>DESCANSO</td>   
+            <td>DESCANSO</td>   
+            <td>DESCANSO</td>   
+    </tr>
+
+    <tr id="row5">
+            <td>12:00 PM</td>
+            <td>Matemáticas</td>   
+            <td>Inglés</td>   
+            <td>Filosofía</td>   
+            <td>Contabilidad</td>   
+            <td>Filosofía</td>   
+    </tr>
+
+    <tr id="row6">
+            <td>1:00 PM</td>
+            <td>Español</td>   
+            <td>Sociales</td>   
+            <td>Educación Física</td>   
+            <td>Química</td>   
+            <td>Física Cuántica</td>   
+    </tr>
+
+    <tr id="row7">
+            <td>2:00 PM</td>
+            <td>Inglés</td>   
+            <td>Física Cuántica</td>   
+            <td>Educación Física</td>   
+            <td>Química</td>   
+            <td>Física Cuántica</td>   
+    </tr>
+    <tr id="row8">
+            <td>3:00 PM</td>
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+    </tr>
+    
+     <tr id="row9">
+            <td>4:00 PM</td>
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+            <td>SALIDAD</td>   
+    </tr>
+    
+    
+    
+  </table> 
+  <button type="button" onclick="suma()" class="btn btn-secondary">Enviar</button>
+
+</div>
+</div>
+
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+            
+                  
+                  
+                  <script>
+                  
+                  
+    function suma(){
+    var num1 = document.getElementById("num1").value;
+    var num2 = document.getElementById("num2").value;
+     var num3 = document.getElementById("num3").value;
+      var num4 = document.getElementById("num4").value;
+       var num5 = document.getElementById("num5").value;
+    
+   google.script.run.userClicked(num1, num2, num3, num4, num5);
+   
+    
+
+    
+}
+                  
+                  
+                  
+                  </script>
+                  
+                  
+                  
+         ***************************************-->         
+                  
+                  
+  
+  
+  
+  
+  <!-- ***************************************************
+  <h1>Hola</h1>
+  <label>Name:</label><input type="text" id="username">
+  <button id="btn">Enviar</button>
+  
+  
+    <script>
+    
+    document.getElementById("btn").addEventListener("click" , doStuff);
+    
+    function doStuff(){
+    
+    var uname = document.getElementById("username").value;
+    
+    google.script.run.userClicked(uname);
+    document.getElementById("username").value="";
+    
+    
+    }
+    
+    </script>
+    
+    ***************************************-->
+    
+    
+    <!--***********************************
+    <form>
+    <p><input type="text" id="name" placeholder="name"></p>
+    <p><input type="text" id="age" placeholder="age"></p>
+    <button>Enviar</button>
+    </form>
+    **************************************-->
+    
+    
+    
+    
+     <!--***********************************
+          
+                  <form>
+                            <p><strong>HTML5</strong></p>
+                          
+                            <p>x1: <input type="text" id="num1"></p>
+                          
+                            <p>y1: <input type="text" id="num2"></p>
+                            
+                            <p>x2: <input type="text" id="num3"></p>
+                            
+                            <p>y2: <input type="text" id="num4"></p>
+                            
+                          
+                            
+                  </form>
+    
+    
+      **************************************-->
+    
+    
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
